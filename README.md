@@ -22,3 +22,22 @@
 3. **Netbeans** - Por útlimo, se utilizó el IDE Netbeans en el que se escribió el código y se añadiron las interfaces gráficas, por lo que se recomienda, aunque no es necesario, utilizar este IDE para su ejecución
 
 - - -
+
+## Estructura del proyecto
+
+La estructura del proyecto tiene los siguiente paquetes y clases relizados en un modelo MVC - Modelo, Vista y Controlador:
+
+- 📦 **com.mycompany.comunicacionrmirecuperacion**
+  - 📄 ComunicacionRMIRecuperacion.java
+- 📦 **RMI**
+  - 📄 ChatService.java
+  - 📄 ChatServiceImplementation.java
+- 📦 **controller**
+  - 📄 ChatController.java
+  - 📄 FrontController.java
+- 📦 **model**
+  - 📄 Mensaje.java
+- 📦 **view**
+  - 📄 ChatJDIalog.java
+  - 📄 MainJFrame.java
+- - -
