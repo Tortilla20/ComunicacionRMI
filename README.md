@@ -68,3 +68,5 @@ Un ejemplo de una conversación sería introducir en el campo IP **localhost**, 
 <p align="center">
   <img src="mediaReadme/conectado.png" alt="Alt">
 </p>
+
+Y para enviar un mensaje 
