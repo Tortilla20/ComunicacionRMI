@@ -71,13 +71,13 @@ Un ejemplo de una conversación sería introducir en el campo IP **localhost**, 
 
 Y para enviar un mensaje, abría que cubrir el campo **Mensaje a enviar** para enviar ese mensaje pulsando en el botón que tiene debajo. Una vez enviado en el chat del usuario que envío el mensaje le marca ese mensaje como que es suyo con un **Yo** a su izquierda, en cambio en el chat del usuario que recibio ese mensaje, le aparece, a su izquierda, que se lo envió el otro usuario, facilitando así, poder distinguir los mensajes que aparecen en el chat
 
-<p align="center">**CHAT USUARIO 1**</p>
+<p align="center">CHAT USUARIO 1</p>
 
 <p align="center">
   <img src="mediaReadme/usuario1.png" alt="Alt">
 </p>
 
-**CHAT USUARIO 2**
+<p align="center">CHAT USUARIO 2</p>
 
 <p align="center">
   <img src="mediaReadme/usuario2.png" alt="Alt">
