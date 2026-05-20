@@ -9,13 +9,13 @@ import java.rmi.RemoteException;
 import java.rmi.server.RMIClientSocketFactory;
 import java.rmi.server.RMIServerSocketFactory;
 import java.rmi.server.UnicastRemoteObject;
+import model.Mensaje;
 
 /**
  *
  * @author idurfer
  */
 
-// Implementar el servicio remoto
 // Usar unicast para que sea accesible por red
 public class ChatServiceImplementation extends UnicastRemoteObject implements ChatService {
     
@@ -30,8 +30,8 @@ public class ChatServiceImplementation extends UnicastRemoteObject implements Ch
     
     // Si un usuario "invoca" el metodo por remoto, se tendria que mostrar el mensaje en la vista
     @Override
-    public void recibirMensaje(String usuarioOrigen, String mensaje) throws RemoteException {
-        controller.mensajeRecibido(usuarioOrigen, mensaje);
+    public void recibirMensaje(Mensaje mensaje) throws RemoteException {
+        controller.mensajeRecibido(mensaje);
     }
 
     @Override

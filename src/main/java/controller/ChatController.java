@@ -15,20 +15,18 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import view.ChatJDialog;
 import RMI.ChatService;
+import model.Mensaje;
 
 /**
  *
  * @author idurfer
  */
-
-// Controlador pricipal del chat
-// Gestionar la conexion del RMI y tambien al enviar y recibir mensajes
 public class ChatController {
-    
+
     private ChatJDialog vista;
     private String nombre;
     // Hace referencia al servicio del otro usuario
-    private ChatService servicioRemoto; 
+    private ChatService servicioRemoto;
     private static final int PORT = 1099;
     private static final String NOMBRE_SERVICIO = "ChatServicie";
 
@@ -39,7 +37,7 @@ public class ChatController {
         vista.addConectarButtonListener(botonConectar());
         vista.addEnviarButtonListener(botonEnviarMensaje());
     }
-    
+
     // publicar servicio RMI ara que el otro usuario pueda conectarse
     private void publicarServicio() {
         try {
@@ -57,7 +55,7 @@ public class ChatController {
             JOptionPane.showMessageDialog(vista, "Error al publicar servicio RMI: " + ex.getMessage());
         }
     }
-    
+
     // Se conecta al RMI del otro usuario por ip y nombre
     public void conectar(String ip, String nombre) {
         try {
@@ -71,25 +69,26 @@ public class ChatController {
             JOptionPane.showMessageDialog(vista, "Error: " + ex.getMessage());
         }
     }
-    
+
     // Enviar mensaje a usuario
     private void enviarMensaje(String texto) throws RemoteException {
-        if(servicioRemoto == null) {
+        if (servicioRemoto == null) {
             JOptionPane.showMessageDialog(vista, "No estas conectado a ningun usuario");
             return;
         }
-        servicioRemoto.recibirMensaje(nombre, texto);
+        Mensaje mensaje = new Mensaje(nombre, texto);
+        servicioRemoto.recibirMensaje(mensaje);
         vista.mostrarMensaje("Yo: " + texto);
     }
-    
+
     // Llamar a ChatServiceImplementation cuando llega un mensaje
-    public void mensajeRecibido(String usuarioOrigen, String mensaje) {
+    public void mensajeRecibido(Mensaje mensaje) {
         // Usar swingUtilities.invokeLater para actualizar la vista desde el hilo correcto
         SwingUtilities.invokeLater(() -> {
-            vista.mostrarMensaje(usuarioOrigen + ":" + mensaje);
+            vista.mostrarMensaje(mensaje.toString());
         });
     }
-    
+
     //BOTONES
     private ActionListener botonConectar() {
         ActionListener al = new ActionListener() {
@@ -97,7 +96,7 @@ public class ChatController {
             public void actionPerformed(ActionEvent e) {
                 String ip = vista.getIpTextField();
                 String nombreRemoto = vista.getNombreRemotoTextField();
-                if(ip.isEmpty() ||nombreRemoto.isEmpty()) {
+                if (ip.isEmpty() || nombreRemoto.isEmpty()) {
                     JOptionPane.showMessageDialog(vista, "Introduce la IP y el nombre del otro usuario");
                     return;
                 }
@@ -106,14 +105,14 @@ public class ChatController {
         };
         return al;
     }
-    
+
     private ActionListener botonEnviarMensaje() {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     String texto = vista.getMensajeTextField();
-                    if(texto.isEmpty()) {
+                    if (texto.isEmpty()) {
                         JOptionPane.showMessageDialog(vista, "El manesaje no puede estar vacio");
                         return;
                     }

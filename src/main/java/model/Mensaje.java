@@ -4,11 +4,13 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author idurfer
  */
-public class Mensaje {
+public class Mensaje implements Serializable {
     
     private String usuarioOrigen;
     private String texto;

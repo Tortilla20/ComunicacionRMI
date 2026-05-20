@@ -1,0 +1,11 @@
+view\ChatJDialog.class
+view\MainJFrame.class
+RMI\ChatService.class
+controller\ChatController$2.class
+controller\FrontController$1.class
+model\Mensaje.class
+controller\FrontController.class
+controller\ChatController.class
+com\mycompany\compunicacionrmirecuperacion\ComunicacionRMIRecuperacion.class
+RMI\ChatServiceImplementation.class
+controller\ChatController$1.class

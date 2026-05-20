@@ -6,14 +6,14 @@ package RMI;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import model.Mensaje;
 
 /**
  *
  * @author idurfer
  */
-// Interfaz remota del chat
-// Meotodos que se pueden invocar desde un RMI
+
 public interface ChatService extends Remote {
-    void recibirMensaje(String usuarioOrigen, String mensaje) throws RemoteException;
+    void recibirMensaje(Mensaje mensaje) throws RemoteException;
     String getNombre() throws RemoteException;
 }
